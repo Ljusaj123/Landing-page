@@ -20,6 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .landing-page .landing-page-container{
@@ -29,17 +30,18 @@ body {
   background-position: center;
   background-size: cover;
   border-radius: 15px;
-  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 10px 10px 80px black;
+  padding: 1rem 2rem;
 
 }
 
 .landing-page .landing-page-container .header{
-  position: absolute;
-  top: 0;
-  height: 10vh;
+  height: 12vh;
   width: 100%;
-  padding: 0.5rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,6 +55,9 @@ body {
   align-items: center;
 
 }
+.header .header-container .navbar-hamburger{
+  display: none;
+}
 .header .header-container .logo-container{
   color: rgb(240, 255, 255);
   
@@ -60,38 +65,56 @@ body {
 .header .header-container .logo-container h1{
   color: rgb(240, 255, 255);
   cursor: pointer;
-  font-size: 2.5rem;
-  
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  transition: transform 0.3s ease;
+}
+
+.header .header-container .logo-container h1:active{
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+
 }
 .header .header-container .navbar-menu-container{
-  width: 40%;
+  width: clamp(260px, 70%, 500px);
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 .header .header-container .navbar-menu-container li{
   list-style: none;
+  transition: transform 0.3s ease;
 }
 .header .header-container .navbar-menu-container li a{
   text-decoration: none;
   color: rgb(240, 255, 255);
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  transition: all 0.3s ease-in;
+}
+
+.header .header-container .navbar-menu-container li:active{
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+
+}
+.header .header-container .navbar-menu-container li a:hover{
+  color: rgb(112, 99, 185);
+  transition: all 0.3s ease-in;
 }
 
 
 .landing-page .landing-page-container .main{
-  position: absolute;
-  left: 5rem;
-  top: 35%;
-  height: 30vh;
-  width: 30vw;
+  height: 350px; 
+  width: clamp(200px, 45vw, 600px); 
   color: rgb(240, 255, 255);
+  flex-grow: 0.1;
+  margin-bottom: 3rem;
 
 
 }
 .landing-page .landing-page-container .main .main-container{
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -101,24 +124,96 @@ body {
 
 }
 .landing-page .landing-page-container .main .main-container h1{
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
 }
 .landing-page .landing-page-container .main .main-container h2{
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
 .btn{
-  height: 2.5rem;
-  width: 8rem;
+  height: 3rem;
+  width: clamp(50px, 40%, 120px);
   border: none;
   border-radius: 5px;
   background-color: rgb(112, 99, 185);
   color: rgb(240, 255, 255);
   cursor: pointer;
   transition: transform 0.4s ease-in;
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
 }
 
 .btn:active{
   transform: scale(0.8);
   transition: transform 0.2s ease-in;
+}
+
+.btn-2{
+  width: clamp(50px, 20%, 120px);
+
+
+}
+
+@media screen and (max-width:500px){
+
+  .header .header-container .navbar-menu-container{
+      position: absolute;
+			top: -100%;
+      left: 0;
+      margin: 0 auto;
+      padding-top: 5rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+			opacity: 0;
+			z-index: -1;
+      width: 100vw;
+      height: 70vh;
+      transition: all 0.5s ease;
+  }
+  .header .header-container .navbar-menu-container.active{
+    opacity: 1;
+    top: 0%;
+    z-index: 10;
+    background-color: rgb(112, 99, 185);
+    transition: all 0.5s ease;
+
+  }
+  .header .header-container .navbar-menu-container li a:hover{
+    color: rgb(240, 255, 255);
+  }
+  .header .header-container .navbar-hamburger {
+    display: block;
+    cursor: pointer;
+    z-index: 998;
+    
+  }
+  .header .header-container .navbar-hamburger .navbar-hamburger-line {
+      width: 27px;
+      height: 3px;
+      margin: 5px 2px;
+      list-style: none;
+      background-color: rgb(240, 255, 255);
+      pointer-events: none;
+      transition: all 0.5s ease;
+  }
+
+  .header .header-container .navbar-hamburger .navbar-hamburger-line.open:nth-child(2){
+    transform: rotate(720deg);
+    background: transparent;
+    transition: all 0.5s ease;
+
+  }
+  .header .header-container .navbar-hamburger .navbar-hamburger-line.open:nth-child(1){
+    transform: translateY(13px) rotate(45deg);
+    transition: all 0.5s ease;
+
+  }
+  .header .header-container .navbar-hamburger .navbar-hamburger-line.open:nth-child(3){
+    transform: translateY(-3px) rotate(-45deg);
+    transition: all 0.5s ease;
+
+  }
+
+  
 }
