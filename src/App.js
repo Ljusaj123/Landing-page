@@ -1,11 +1,8 @@
 import React, { useState } from "react";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [navbar, setNavbar] = useState(false);
-
-  const showNavbar = () => {
-    setNavbar((prev) => !prev);
-  };
 
   return (
     <div className="landing-page">
@@ -15,59 +12,9 @@ function App() {
             <div className="logo-container">
               <h1>Logo</h1>
             </div>
-            <nav
-              className={
-                navbar
-                  ? "navbar-menu-container active"
-                  : "navbar-menu-container"
-              }
-            >
-              <li className="navbar-links">
-                <a href="/" className="navbar-items">
-                  Home
-                </a>
-              </li>
-              <li className="navbar-links">
-                <a href="/" className="navbar-items">
-                  About
-                </a>
-              </li>
-              <li className="navbar-links">
-                <a href="/" className="navbar-items">
-                  Services
-                </a>
-              </li>
-              <li className="navbar-links">
-                <a href="/" className="navbar-items">
-                  Contact
-                </a>
-              </li>
-            </nav>
-            <div className="navbar-hamburger" onClick={showNavbar}>
-              <li
-                className={
-                  navbar
-                    ? "navbar-hamburger-line open"
-                    : "navbar-hamburger-line"
-                }
-              ></li>
-              <li
-                className={
-                  navbar
-                    ? "navbar-hamburger-line open"
-                    : "navbar-hamburger-line"
-                }
-              ></li>
-              <li
-                className={
-                  navbar
-                    ? "navbar-hamburger-line open"
-                    : "navbar-hamburger-line"
-                }
-              ></li>
-            </div>
           </div>
         </header>
+        <NavBar navbar={navbar} setNavbar={setNavbar} />
         <main className="main">
           <div className="main-container">
             <h1>Lorem ipsum</h1>
