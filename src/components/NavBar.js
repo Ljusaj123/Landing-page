@@ -1,55 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import List from "../const/List";
 
 function NavBar() {
-  const showNavbar = ({ navbar, setNavbar }) => {
+  const [list] = useState(List);
+
+  const [navbar, setNavbar] = useState(false);
+
+  const showNavbar = () => {
     setNavbar((prev) => !prev);
   };
+
   return (
-    <>
+    <div className="navbar-container">
       <nav
         className={
-          NavBar ? "navbar-menu-container active" : "navbar-menu-container"
+          navbar ? "navbar-menu-container active" : "navbar-menu-container"
         }
       >
-        <li className="navbar-links">
-          <a href="/" className="navbar-items">
-            Home
-          </a>
-        </li>
-        <li className="navbar-links">
-          <a href="/" className="navbar-items">
-            About
-          </a>
-        </li>
-        <li className="navbar-links">
-          <a href="/" className="navbar-items">
-            Services
-          </a>
-        </li>
-        <li className="navbar-links">
-          <a href="/" className="navbar-items">
-            Contact
-          </a>
-        </li>
+        {list.map((li, index) => {
+          return (
+            <li className="navbar-links" key={index}>
+              <a href="/" className="navbar-items">
+                {li}
+              </a>
+            </li>
+          );
+        })}
       </nav>
       <div className="navbar-hamburger" onClick={showNavbar}>
         <li
           className={
-            NavBar ? "navbar-hamburger-line open" : "navbar-hamburger-line"
+            navbar ? "navbar-hamburger-line open" : "navbar-hamburger-line"
           }
         ></li>
         <li
           className={
-            NavBar ? "navbar-hamburger-line open" : "navbar-hamburger-line"
+            navbar ? "navbar-hamburger-line open" : "navbar-hamburger-line"
           }
         ></li>
         <li
           className={
-            NavBar ? "navbar-hamburger-line open" : "navbar-hamburger-line"
+            navbar ? "navbar-hamburger-line open" : "navbar-hamburger-line"
           }
         ></li>
       </div>
-    </>
+    </div>
   );
 }
 
