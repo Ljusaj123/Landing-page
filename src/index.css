@@ -48,73 +48,77 @@ body {
   padding: 1rem 2rem;
 }
 
-.landing-page .landing-page-container .header {
+header {
   height: 12vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.header .header-container {
+.header-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header .header-container .navbar-hamburger {
-  display: none;
-}
-.header .header-container .logo-container {
-  color: rgb(240, 255, 255);
-}
-.header .header-container .logo-container h1 {
+
+.header-container h1 {
   color: rgb(240, 255, 255);
   cursor: pointer;
   font-size: clamp(1.2rem, 2.5vw, 2.5rem);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.header .header-container .logo-container h1:active {
+.header-container h1:active {
   transform: scale(0.8);
-  transition: transform 0.3s ease;
 }
-.header .header-container .navbar-menu-container {
+
+.navbar-container {
   width: clamp(260px, 70%, 500px);
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-container .navbar-hamburger {
+  display: none;
+}
+
+.navbar-menu-container {
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header .header-container .navbar-menu-container li {
+
+.navbar-menu-container .navbar-links {
   list-style: none;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
-.header .header-container .navbar-menu-container li a {
+
+.navbar-menu-container .navbar-links:active {
+  transform: scale(0.9);
+}
+.navbar-menu-container .navbar-items {
   text-decoration: none;
   color: rgb(240, 255, 255);
   font-size: clamp(0.8rem, 1.5vw, 1.2rem);
   transition: all 0.3s ease-in;
 }
-
-.header .header-container .navbar-menu-container li:active {
+.navbar-menu-container .navbar-items:active {
   transform: scale(0.9);
-  transition: transform 0.3s ease;
-}
-.header .header-container .navbar-menu-container li a:hover {
-  color: rgb(112, 99, 185);
-  transition: all 0.3s ease-in;
 }
 
-.landing-page .landing-page-container .main {
-  height: 350px;
-  width: 100%;
-  width: clamp(250px, 90%, 600px);
+main {
+  height: 40vh;
+  width: clamp(250px, 90%, 650px);
   color: rgb(240, 255, 255);
-  flex-grow: 0.1;
   margin-bottom: 3rem;
 }
-.landing-page .landing-page-container .main .main-container {
+
+.main-container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -122,11 +126,11 @@ body {
   justify-content: space-between;
   align-items: flex-start;
 }
-.landing-page .landing-page-container .main .main-container h1 {
+.main-container h1 {
   font-size: clamp(1.5rem, 4.5vw, 3rem);
   width: 100%;
 }
-.landing-page .landing-page-container .main .main-container h2 {
+.main-container h3 {
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
@@ -134,40 +138,35 @@ body {
   height: 3rem;
   width: clamp(50px, 40%, 120px);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: rgb(112, 99, 185);
   color: rgb(240, 255, 255);
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   cursor: pointer;
-  transition: transform 0.4s ease-in;
-  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  transition: all 0.4s ease-in;
 }
 
 .btn:active {
   transform: scale(0.8);
-  transition: transform 0.2s ease-in;
 }
 
-.btn-2 {
-  width: clamp(50px, 20%, 120px);
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .landing-page .landing-page-container {
     padding: 1rem;
     align-items: center;
   }
-  .landing-page .landing-page-container .main .main-container {
+  .main-container {
     align-items: center;
   }
 
-  .landing-page .landing-page-container .main .main-container h1 {
+  .main-container h1 {
     text-align: center;
   }
-  .landing-page .landing-page-container .main .main-container h2 {
+  .main-container h3 {
     text-align: center;
   }
 
-  .header .header-container .navbar-menu-container {
+  .navbar-menu-container {
     position: absolute;
     top: -100%;
     left: 0;
@@ -184,22 +183,21 @@ body {
     transition: all 0.5s ease;
   }
 
-  .header .header-container .navbar-menu-container.active {
+  .navbar-menu-container.active {
     opacity: 1;
     top: 0%;
     z-index: 10;
     background-color: rgb(112, 99, 185);
     transition: all 0.5s ease;
   }
-  .header .header-container .navbar-menu-container li a:hover {
-    color: rgb(240, 255, 255);
-  }
-  .header .header-container .navbar-hamburger {
+
+  .navbar-container .navbar-hamburger {
     display: block;
     cursor: pointer;
-    z-index: 998;
+    z-index: 20;
   }
-  .header .header-container .navbar-hamburger .navbar-hamburger-line {
+
+  .navbar-container .navbar-hamburger-line {
     width: 27px;
     height: 3px;
     margin: 5px 2px;
@@ -209,26 +207,14 @@ body {
     transition: all 0.5s ease;
   }
 
-  .header
-    .header-container
-    .navbar-hamburger
-    .navbar-hamburger-line.open:nth-child(2) {
+  .navbar-container .navbar-hamburger-line.open:nth-child(2) {
     transform: rotate(720deg);
     background: transparent;
-    transition: all 0.5s ease;
   }
-  .header
-    .header-container
-    .navbar-hamburger
-    .navbar-hamburger-line.open:nth-child(1) {
+  .navbar-container .navbar-hamburger-line.open:nth-child(1) {
     transform: translateY(13px) rotate(45deg);
-    transition: all 0.5s ease;
   }
-  .header
-    .header-container
-    .navbar-hamburger
-    .navbar-hamburger-line.open:nth-child(3) {
+  .navbar-container .navbar-hamburger-line.open:nth-child(3) {
     transform: translateY(-3px) rotate(-45deg);
-    transition: all 0.5s ease;
   }
 }

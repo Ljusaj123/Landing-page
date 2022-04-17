@@ -11,8 +11,8 @@ function NavBar() {
   };
 
   return (
-    <div className="navbar-container">
-      <nav
+    <nav className="navbar-container">
+      <div
         className={
           navbar ? "navbar-menu-container active" : "navbar-menu-container"
         }
@@ -26,7 +26,7 @@ function NavBar() {
             </li>
           );
         })}
-      </nav>
+      </div>
       <div className="navbar-hamburger" onClick={showNavbar}>
         <li
           className={
@@ -44,7 +44,7 @@ function NavBar() {
           }
         ></li>
       </div>
-    </div>
+    </nav>
   );
 }
 
